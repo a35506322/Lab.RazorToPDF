@@ -1,6 +1,0 @@
-@Lab.RazorToPDF_HostAddress = http://localhost:5239
-
-GET {{Lab.RazorToPDF_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
