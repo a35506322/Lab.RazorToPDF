@@ -1,3 +1,5 @@
+@model ReazorTemplate.Models.LoanViewModel
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 
@@ -206,7 +208,7 @@
                 width: 150px;
                 vertical-align: bottom;
               ">
-                        訂單編號：
+                        訂單編號：@Model.OrderNumber
                     </td>
                 </tr>
             </table>
@@ -219,39 +221,32 @@
                     申請人基本資料
                 </td>
                 <td class="label">中文姓名</td>
-                <td class="field" colspan="2" style="width: 17%"></td>
+                <td class="field" colspan="2" style="width: 17%">@Model.ChineseName</td>
                 <td class="label">身分證字號</td>
-                <td class="field" colspan="2"></td>
+                <td class="field" colspan="2">@Model.IdentityNumber</td>
                 <td class="label">出生日期</td>
                 <td class="field" colspan="2">
-                    民國&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+                    民國&nbsp;@Model.BirthYear&nbsp;年&nbsp;@Model.BirthMonth&nbsp;月&nbsp;@Model.BirthDay&nbsp;日
                 </td>
             </tr>
             <tr>
                 <td class="label">身分證換<br />補領日期</td>
                 <td colspan="9" class="field">
-                    民國&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日&nbsp;&nbsp;&nbsp;
-                    <span class="checkbox"></span>1.初發
-                    <span class="checkbox checked"></span>2.補發
-                    <span class="checkbox"></span>3.換發&nbsp;&nbsp;
+                    民國&nbsp;@Model.IdentityIssueYear&nbsp;年&nbsp;@Model.IdentityIssueMonth&nbsp;月&nbsp;@Model.IdentityIssueDay&nbsp;日&nbsp;&nbsp;&nbsp;
+                    <span class="checkbox @(Model.IdentityIssueType == 1 ? "checked" : "")"></span>1.初發
+                    <span class="checkbox @(Model.IdentityIssueType == 2 ? "checked" : "")"></span>2.補發
+                    <span class="checkbox @(Model.IdentityIssueType == 3 ? "checked" : "")"></span>3.換發&nbsp;&nbsp;
                     <span style="display: inline-block">發證地：</span>
-                    <span style="
-                display: inline-block;
-                border-bottom: 1px solid #000;
-                width: 60px;
-              ">&nbsp;
+                    <span style="display: inline-block; border-bottom: 1px solid #000; width: 60px;">
+                        @Model.IssueLocation
                     </span>
                     <span style="display: inline-block">出生地：</span>
-                    <span style="
-                display: inline-block;
-                border-bottom: 1px solid #000;
-                width: 60px;
-              ">國家</span>
-                    <span style="
-                display: inline-block;
-                border-bottom: 1px solid #000;
-                width: 60px;
-              ">城市</span>
+                    <span style="display: inline-block; border-bottom: 1px solid #000; width: 60px;">
+                        @Model.BirthCountry
+                    </span>
+                    <span style="display: inline-block; border-bottom: 1px solid #000; width: 60px;">
+                        @Model.BirthCity
+                    </span>
                 </td>
             </tr>
             <tr>
@@ -260,24 +255,23 @@
                     <table style="border: none">
                         <tr>
                             <td style="border: none; width: 15%">郵遞區號</td>
-                            <td style="border: none; width: 10%">縣</td>
-                            <td style="border: none; width: 10%">鄉鎮</td>
-                            <td style="border: none; width: 10%">里</td>
-                            <td style="border: none" colspan="5">路</td>
+                            <td style="border: none; width: 10%">@Model.RegisteredCounty 縣</td>
+                            <td style="border: none; width: 10%">@Model.RegisteredTownship 鄉鎮</td>
+                            <td style="border: none; width: 10%">@Model.RegisteredVillage 里</td>
+                            <td style="border: none" colspan="5">@Model.RegisteredRoad 路</td>
                         </tr>
                         <tr>
                             <td style="border: none">
-                                <span class="checkbox"></span><span class="checkbox"></span><span
-                                    class="checkbox"></span>
+                                @Model.RegisteredPostalCode
                             </td>
-                            <td style="border: none">市</td>
-                            <td style="border: none">市區</td>
-                            <td style="border: none">村</td>
-                            <td style="border: none">街</td>
-                            <td style="border: none">巷</td>
-                            <td style="border: none">弄</td>
-                            <td style="border: none">號</td>
-                            <td style="border: none">樓</td>
+                            <td style="border: none">@Model.RegisteredCounty 市</td>
+                            <td style="border: none">@Model.RegisteredTownship 市區</td>
+                            <td style="border: none">@Model.RegisteredVillage 村</td>
+                            <td style="border: none">@Model.RegisteredRoad 街</td>
+                            <td style="border: none">@Model.RegisteredLane 巷</td>
+                            <td style="border: none">@Model.RegisteredAlley 弄</td>
+                            <td style="border: none">@Model.RegisteredNumber 號</td>
+                            <td style="border: none">@Model.RegisteredFloor 樓</td>
                         </tr>
                     </table>
                 </td>
@@ -285,23 +279,43 @@
             <tr>
                 <td class="label">居住地址</td>
                 <td colspan="9">
-                    <span class="checkbox"></span>同戶籍地&nbsp;&nbsp;<span class="checkbox"></span>另列如下
+                    <span class="checkbox @(Model.IsSameAsRegistered ? "checked" : "")"></span>同戶籍地&nbsp;&nbsp;
+                    <span class="checkbox @(!Model.IsSameAsRegistered ? "checked" : "")"></span>另列如下
+                    @if (!Model.IsSameAsRegistered)
+                    {
+                        <div>
+                            @Model.ResidentialPostalCode @Model.ResidentialCounty @Model.ResidentialTownship
+                            @Model.ResidentialVillage
+                            @Model.ResidentialRoad @Model.ResidentialLane @Model.ResidentialAlley @Model.ResidentialNumber
+                            @Model.ResidentialFloor
+                        </div>
+                    }
                 </td>
             </tr>
             <tr>
                 <td class="label">帳單地址</td>
                 <td colspan="9">
-                    <span class="checkbox"></span>同戶籍地&nbsp;&nbsp;<span class="checkbox"></span>同居住地&nbsp;&nbsp;<span
-                        class="checkbox"></span>另列如下
+                    <span class="checkbox @(Model.BillingIsSameAsRegistered ? "checked" : "")"></span>同戶籍地&nbsp;&nbsp;
+                    <span class="checkbox @(Model.BillingIsSameAsResidential ? "checked" : "")"></span>同居住地&nbsp;&nbsp;
+                    <span
+                        class="checkbox @(!Model.BillingIsSameAsRegistered && !Model.BillingIsSameAsResidential ? "checked" : "")"></span>另列如下
+                    @if (!Model.BillingIsSameAsRegistered && !Model.BillingIsSameAsResidential)
+                    {
+                        <div>
+                            @Model.BillingPostalCode @Model.BillingCounty @Model.BillingTownship @Model.BillingVillage
+                            @Model.BillingRoad @Model.BillingLane @Model.BillingAlley @Model.BillingNumber
+                            @Model.BillingFloor
+                        </div>
+                    }
                 </td>
             </tr>
             <tr>
                 <td class="label">聯絡電話</td>
-                <td class="field" colspan="2"></td>
+                <td class="field" colspan="2">@Model.ContactPhone</td>
                 <td class="label" style="width: 8%">行動電話</td>
-                <td class="field" colspan="1"></td>
+                <td class="field" colspan="1">@Model.MobilePhone</td>
                 <td class="label" style="width: 8%">E-mail</td>
-                <td class="field" colspan="3"></td>
+                <td class="field" colspan="3">@Model.Email</td>
             </tr>
             <!-- 職業資料 -->
             <tr>
@@ -311,41 +325,41 @@
             </tr>
             <tr>
                 <td class="label">公司名稱</td>
-                <td class="field" colspan="2"></td>
+                <td class="field" colspan="2">@Model.CompanyName</td>
                 <td class="label">職稱</td>
-                <td class="field"></td>
+                <td class="field">@Model.JobTitle</td>
                 <td class="label">年資</td>
-                <td class="field"></td>
+                <td class="field">@Model.YearsOfService</td>
                 <td class="label">月收入</td>
-                <td class="field">新臺幣元</td>
+                <td class="field">新臺幣 @Model.MonthlyIncome 元</td>
             </tr>
             <tr>
                 <td class="label">職業別</td>
-                <td class="field" colspan="2"></td>
+                <td class="field" colspan="2">@Model.Occupation</td>
                 <td class="label">職務別</td>
-                <td class="field"></td>
+                <td class="field">@Model.JobPosition</td>
                 <td class="label">公司統編</td>
-                <td class="field"></td>
+                <td class="field">@Model.CompanyTaxId</td>
                 <td class="label">公司電話</td>
-                <td class="field"></td>
+                <td class="field">@Model.CompanyPhone</td>
             </tr>
             <tr>
                 <td class="label">公司地址</td>
-                <td colspan="9" class="field"></td>
+                <td colspan="9" class="field">@Model.CompanyAddress</td>
             </tr>
             <tr>
                 <td class="label">所得資金<br />來源</td>
                 <td colspan="9">
-                    <span class="checkbox"></span>經營事業收入
-                    <span class="checkbox"></span>薪資所得
-                    <span class="checkbox"></span>繼承/贈與
-                    <span class="checkbox"></span>投資理財
-                    <span class="checkbox"></span>退休金
-                    <span class="checkbox"></span>租金收入
-                    <span class="checkbox"></span>專案執業收入
-                    <span class="checkbox"></span>閒置資金<br />
+                    <span class="checkbox @(Model.IncomeSourceBusiness ? "checked" : "")"></span>經營事業收入
+                    <span class="checkbox @(Model.IncomeSourceSalary ? "checked" : "")"></span>薪資所得
+                    <span class="checkbox @(Model.IncomeSourceInheritance ? "checked" : "")"></span>繼承/贈與
+                    <span class="checkbox @(Model.IncomeSourceInvestment ? "checked" : "")"></span>投資理財
+                    <span class="checkbox @(Model.IncomeSourceRetirement ? "checked" : "")"></span>退休金
+                    <span class="checkbox @(Model.IncomeSourceRental ? "checked" : "")"></span>租金收入
+                    <span class="checkbox @(Model.IncomeSourceProfession ? "checked" : "")"></span>專案執業收入
+                    <span class="checkbox @(Model.IncomeSourceIdleFunds ? "checked" : "")"></span>閒置資金<br />
                     <span
-                        class="checkbox"></span>其他(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+                        class="checkbox @(Model.IncomeSourceOther ? "checked" : "")"></span>其他(@Model.IncomeSourceOtherDesc)
                 </td>
             </tr>
 
@@ -357,21 +371,21 @@
                 <td class="label">貸款額度</td>
                 <td colspan="9">
                     1.<span
-                        class="checkbox"></span>循環動用型。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    2.<span class="checkbox"></span>一次撥付型。
+                        class="checkbox @(Model.IsRevolvingLoan ? "checked" : "")"></span>循環動用型。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    2.<span class="checkbox @(Model.IsOneTimeLoan ? "checked" : "")"></span>一次撥付型。
                 </td>
             </tr>
             <tr>
                 <td class="label">申請金額</td>
-                <td class="field" colspan="4">新臺幣萬元整</td>
+                <td class="field" colspan="4">新臺幣 @Model.LoanAmount 萬元整</td>
                 <td class="label">申請年限</td>
-                <td class="field" colspan="3">年 ( 1~7年)</td>
+                <td class="field" colspan="3">@Model.LoanTerm 年 ( 1~7年)</td>
             </tr>
             <tr>
                 <td class="label">匯入銀行</td>
-                <td colspan="4"></td>
+                <td colspan="4">@Model.BankName</td>
                 <td class="label">匯入帳號</td>
-                <td colspan="3"></td>
+                <td colspan="3">@Model.BankAccountNumber</td>
             </tr>
             <tr>
                 <td colspan="9" class="small-text red-text">
@@ -394,30 +408,30 @@
             </tr>
             <tr>
                 <td class="center">1</td>
-                <td></td>
-                <td colspan="2"></td>
-                <td colspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@Model.CompensationBankName_1</td>
+                <td colspan="2">@Model.CompensationBranchName_1</td>
+                <td colspan="2">@Model.CompensationAccountNumber_1</td>
+                <td>@Model.CompensationAccountName_1</td>
+                <td>@Model.CompensationAmount_1</td>
+                <td>@Model.CompensationActualAmount_1</td>
             </tr>
             <tr>
                 <td class="center">2</td>
-                <td></td>
-                <td colspan="2"></td>
-                <td colspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@Model.CompensationBankName_2</td>
+                <td colspan="2">@Model.CompensationBranchName_2</td>
+                <td colspan="2">@Model.CompensationAccountNumber_2</td>
+                <td>@Model.CompensationAccountName_2</td>
+                <td>@Model.CompensationAmount_2</td>
+                <td>@Model.CompensationActualAmount_2</td>
             </tr>
             <tr>
                 <td class="center">3</td>
-                <td></td>
-                <td colspan="2"></td>
-                <td colspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@Model.CompensationBankName_3</td>
+                <td colspan="2">@Model.CompensationBranchName_3</td>
+                <td colspan="2">@Model.CompensationAccountNumber_3</td>
+                <td>@Model.CompensationAccountName_3</td>
+                <td>@Model.CompensationAmount_3</td>
+                <td>@Model.CompensationActualAmount_3</td>
             </tr>
         </table>
 
@@ -517,7 +531,7 @@
                             申請人簽名須完整不可塗改
                         </div>
                         <div style="position: absolute; top: 17px; right: 0px; bottom: 0px">
-                            中 華 民 國　　　　年　　　　月　　　　日
+                            中 華 民 國　@Model.ApplyDate
                         </div>
                     </div>
                 </td>
@@ -534,11 +548,11 @@
         <table>
             <tr>
                 <td style="width: 10%">單位別</td>
-                <td colspan="2"></td>
+                <td colspan="2">@Model.DepartmentName</td>
                 <td style="width: 10%">推廣人員</td>
-                <td colspan="2"></td>
+                <td colspan="2">@Model.PromotionStaff</td>
                 <td style="width: 10%">單位別</td>
-                <td colspan="2"></td>
+                <td colspan="2">@Model.DepartmentCode</td>
             </tr>
         </table>
 
@@ -630,7 +644,7 @@
             </ul>
         </div>
 
-        <div class="page-number">第 1 頁，共 2 頁</div>
+        <div class="page-number">第 2 頁，共 2 頁</div>
         <div class="version">113.09 版</div>
     </div>
 </body>

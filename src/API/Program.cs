@@ -114,7 +114,11 @@ app.MapGet(
         [FromServices] PuppeteerService puppeteerService
     ) =>
     {
-        var template = await razorTemplateEngine.RenderAsync("/Views/Loan/Loan.cshtml");
+        // 建立假的 LoanViewModel 資料
+        var loanModel = CreateSampleLoanViewModel();
+
+        // 渲染 Razor 視圖並帶入模型
+        var template = await razorTemplateEngine.RenderAsync("/Views/Loan/Loan.cshtml", loanModel);
         var browser = await puppeteerService.GetBrowserAsync();
         using var page = await browser.NewPageAsync();
         await page.SetContentAsync(template);
@@ -129,6 +133,101 @@ app.MapGet(
         return Results.File(pdfBytes, "application/pdf", "output.pdf");
     }
 );
+
+// 建立示範用的 LoanViewModel 資料
+LoanViewModel CreateSampleLoanViewModel()
+{
+    return new LoanViewModel
+    {
+        // 訂單編號
+        OrderNumber = "LN2023102500001",
+
+        // 申請人基本資料
+        ChineseName = "王大明",
+        IdentityNumber = "A123456789",
+        BirthYear = "75",
+        BirthMonth = "05",
+        BirthDay = "15",
+        IdentityIssueYear = "110",
+        IdentityIssueMonth = "03",
+        IdentityIssueDay = "20",
+        IdentityIssueType = 2, // 2.補發
+        IssueLocation = "台北市",
+        BirthCountry = "台灣",
+        BirthCity = "台北",
+
+        // 戶籍地址
+        RegisteredPostalCode = "106",
+        RegisteredCounty = "台北市",
+        RegisteredTownship = "大安區",
+        RegisteredVillage = "仁愛里",
+        RegisteredRoad = "仁愛路四段",
+        RegisteredLane = "151",
+        RegisteredAlley = "12",
+        RegisteredNumber = "5",
+        RegisteredFloor = "7",
+
+        // 居住地址
+        IsSameAsRegistered = true,
+
+        // 帳單地址
+        BillingIsSameAsRegistered = true,
+        BillingIsSameAsResidential = false,
+
+        // 聯絡資訊
+        ContactPhone = "02-27556789",
+        MobilePhone = "0912-345-678",
+        Email = "wangdaming@example.com",
+
+        // 職業資料
+        CompanyName = "聯合科技股份有限公司",
+        JobTitle = "資深工程師",
+        YearsOfService = "5",
+        MonthlyIncome = 85000,
+        Occupation = "資訊科技業",
+        JobPosition = "技術開發",
+        CompanyTaxId = "12345678",
+        CompanyPhone = "02-87654321",
+        CompanyAddress = "台北市內湖區瑞光路513巷32號7樓",
+
+        // 所得資金來源
+        IncomeSourceSalary = true,
+        IncomeSourceInvestment = true,
+
+        // 貸款資料
+        IsOneTimeLoan = true,
+        LoanAmount = 50,
+        LoanTerm = 3,
+
+        // 匯款資訊
+        BankName = "聯邦銀行",
+        BankAccountNumber = "123-456-789012",
+
+        // 代償資料
+        CompensationBankName_1 = "國泰世華銀行",
+        CompensationBranchName_1 = "台北分行",
+        CompensationAccountNumber_1 = "987-654-321098",
+        CompensationAccountName_1 = "王大明",
+        CompensationAmount_1 = 20,
+        CompensationActualAmount_1 = 20,
+
+        CompensationBankName_2 = "台新銀行",
+        CompensationBranchName_2 = "信義分行",
+        CompensationAccountNumber_2 = "456-789-123456",
+        CompensationAccountName_2 = "王大明",
+        CompensationAmount_2 = 15,
+        CompensationActualAmount_2 = 15,
+
+        // 申請資訊
+        ApplyDate = "112年10月25日",
+
+        // 銀行內部使用
+        DepartmentName = "台北分行",
+        PromotionStaff = "張經理",
+        DepartmentCode = "TPE001",
+    };
+}
+
 List<TodoItem> GetSampleTodoItems()
 {
     return new List<TodoItem>
