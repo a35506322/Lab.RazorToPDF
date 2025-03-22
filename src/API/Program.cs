@@ -9,16 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// builder.Services.AddControllersWithViews();
-
 builder.Services.AddRazorTemplating();
 
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
-// app.UseStaticFiles();
 
 app.MapGet(
     "/get-example-view",
