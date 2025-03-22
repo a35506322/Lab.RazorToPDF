@@ -1,6 +1,7 @@
 using API;
 using Microsoft.AspNetCore.Mvc;
 using PuppeteerSharp;
+using PuppeteerSharp.Media;
 using Razor.Templating.Core;
 using ReazorTemplate.Models;
 
@@ -106,6 +107,28 @@ app.MapGet(
     }
 );
 
+app.MapGet(
+    "/get-loan",
+    async (
+        [FromServices] IRazorTemplateEngine razorTemplateEngine,
+        [FromServices] PuppeteerService puppeteerService
+    ) =>
+    {
+        var template = await razorTemplateEngine.RenderAsync("/Views/Loan/Loan.cshtml");
+        var browser = await puppeteerService.GetBrowserAsync();
+        using var page = await browser.NewPageAsync();
+        await page.SetContentAsync(template);
+        var pdfBytes = await page.PdfDataAsync(
+            new PdfOptions
+            {
+                Format = PuppeteerSharp.Media.PaperFormat.A4,
+                PrintBackground = true,
+                Scale = 1, // 縮小比例以適應內容
+            }
+        );
+        return Results.File(pdfBytes, "application/pdf", "output.pdf");
+    }
+);
 List<TodoItem> GetSampleTodoItems()
 {
     return new List<TodoItem>
