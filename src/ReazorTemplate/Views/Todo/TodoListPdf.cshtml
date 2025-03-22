@@ -1,0 +1,117 @@
+@model ReazorTemplate.Models.TodoListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>待辦事項列表</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            font-size: 12pt;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .page-header h1 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .company-info {
+            font-size: 11pt;
+            color: #666;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .status-complete {
+            color: green;
+            font-weight: bold;
+        }
+        .status-incomplete {
+            color: orange;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            font-size: 10pt;
+            color: #777;
+            text-align: center;
+        }
+        .content-cell {
+            white-space: pre-line; /* 保持文字換行 */
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>待辦事項列表</h1>
+        <div class="company-info">
+            <div>@DateTime.Now.ToString("yyyy年MM月dd日")</div>
+        </div>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%">標題</th>
+                <th style="width: 40%">內容</th>
+                <th style="width: 15%">狀態</th>
+                <th style="width: 20%">完成時間</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.TodoItems.Any())
+            {
+                @foreach (var item in Model.TodoItems)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td class="content-cell">@item.Content</td>
+                        <td class="@(item.IsComplete ? "status-complete" : "status-incomplete")">
+                            @(item.IsComplete ? "已完成" : "未完成")
+                        </td>
+                        <td>
+                            @(item.CompleteTime.HasValue ? item.CompleteTime.Value.ToString("yyyy-MM-dd HH:mm") : "尚未完成")
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" style="text-align: center;">沒有待辦事項</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <div class="footer">
+        <p>本文件由系統自動產生 - 產生時間：@DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss")</p>
+    </div>
+</body>
+</html> 
