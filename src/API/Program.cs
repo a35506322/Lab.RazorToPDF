@@ -1,4 +1,6 @@
+using API;
 using Microsoft.AspNetCore.Mvc;
+using PuppeteerSharp;
 using Razor.Templating.Core;
 using ReazorTemplate.Models;
 
@@ -10,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRazorTemplating();
+
+builder.Services.AddSingleton<PuppeteerService>();
 
 var app = builder.Build();
 
@@ -27,7 +31,10 @@ app.MapGet(
 
 app.MapGet(
     "/get-todo-list-html",
-    async ([FromServices] IRazorTemplateEngine razorTemplateEngine) =>
+    async (
+        [FromServices] IRazorTemplateEngine razorTemplateEngine,
+        [FromServices] PuppeteerService puppeteerService
+    ) =>
     {
         List<TodoItem> _todoItems = new List<TodoItem>
         {
@@ -62,7 +69,12 @@ app.MapGet(
             "/Views/Todo/TodoListPdf.cshtml",
             viewModel
         );
-        return Results.Ok(template);
+
+        var browser = await puppeteerService.GetBrowserAsync();
+        using var page = await browser.NewPageAsync();
+        await page.SetContentAsync(template);
+        var pdfBytes = await page.PdfDataAsync();
+        return Results.File(pdfBytes, "application/pdf", "output.pdf");
     }
 );
 
