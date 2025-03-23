@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聯邦銀行個人信貸申請書</title>
+    <style>
+      body {
+        font-family: "DFKai-SB", "標楷體", "Microsoft JhengHei", Arial,
+          sans-serif;
+        font-size: 11px;
+        line-height: 1.5;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto 20px auto;
+        padding: 5px 10px;
+        background: white;
+        position: relative;
+        box-sizing: border-box;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        page-break-after: always;
+      }
+
+      @media print {
+        body {
+          margin: 0;
+          padding: 0;
+          background: none;
+        }
+
+        .page {
+          margin: 0;
+          border: none;
+          box-shadow: none;
+          page-break-after: always;
+        }
+      }
+
+      .page-number {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 10px;
+      }
+
+      .version {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 10px;
+      }
+
+      .header {
+        background-color: #fff;
+      }
+
+      .logo {
+        height: 30px;
+        margin-left: 10px;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #000;
+      }
+
+      th,
+      td {
+        padding: 2px;
+        vertical-align: middle;
+      }
+
+      .section-header {
+        background-color: #34bcbc;
+        color: white;
+        text-align: center;
+        width: 30px;
+        vertical-align: middle;
+        font-size: 13px;
+      }
+
+      .label {
+        background-color: #f0f0f0;
+        font-weight: bold;
+        width: 80px;
+        text-align: center;
+      }
+
+      .field {
+        width: auto;
+      }
+
+      .checkbox {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 1px solid #000;
+        margin-right: 3px;
+        vertical-align: middle;
+      }
+
+      .red-text {
+        color: red;
+      }
+
+      .small-text {
+        font-size: 10px;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .right {
+        text-align: right;
+      }
+
+      .section-title {
+        text-align: center;
+        font-weight: bold;
+        margin: 5px 0;
+        letter-spacing: 2px;
+        font-size: 14px;
+      }
+
+      .footer {
+        margin-top: 10px;
+        padding: 5px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .signature-box {
+        border: 1px solid #000;
+        height: 40px;
+        position: relative;
+      }
+
+      .signature-label {
+        position: absolute;
+        bottom: 32px;
+        right: 10px;
+        font-size: 8px;
+      }
+
+      .stamp-box {
+        border: 1px solid #000;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+      }
+
+      .content {
+        padding-left: 10px;
+        padding-right: 10px;
+        line-height: 2.5;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 第一頁 -->
+    <div class="page">
+      <div class="header">
+        <table style="border: none">
+          <tr>
+            <td style="border: none; width: 80px; vertical-align: bottom">
+              <div style="display: flex; align-items: center">
+                <div style="margin-left: 5px">聯邦銀行</div>
+              </div>
+            </td>
+            <td
+              style="
+                border: none;
+                text-align: center;
+                font-weight: bold;
+                font-size: 20px;
+                vertical-align: bottom;
+              "
+            >
+              個人信貸申請書
+            </td>
+            <td
+              style="
+                border: none;
+                text-align: left;
+                width: 150px;
+                vertical-align: bottom;
+              "
+            >
+              訂單編號：
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <table>
+        <!-- 申請人基本資料 -->
+        <tr>
+          <td
+            rowspan="6"
+            class="section-header"
+            style="writing-mode: vertical-rl; text-orientation: upright"
+          >
+            申請人基本資料
+          </td>
+          <td class="label">中文姓名</td>
+          <td class="field" colspan="2" style="width: 17%"></td>
+          <td class="label">身分證字號</td>
+          <td class="field" colspan="2"></td>
+          <td class="label">出生日期</td>
+          <td class="field" colspan="2">
+            民國&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+          </td>
+        </tr>
+        <tr>
+          <td class="label">身分證換<br />補領日期</td>
+          <td colspan="9" class="field">
+            民國&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日&nbsp;&nbsp;&nbsp;
+            <span class="checkbox"></span>1.初發
+            <span class="checkbox"></span>2.補發
+            <span class="checkbox"></span>3.換發&nbsp;&nbsp;
+            <span style="display: inline-block">發證地：</span>
+            <span
+              style="
+                display: inline-block;
+                border-bottom: 1px solid #000;
+                width: 60px;
+              "
+              >&nbsp;
+            </span>
+            <span style="display: inline-block">出生地：</span>
+            <span
+              style="
+                display: inline-block;
+                border-bottom: 1px solid #000;
+                width: 60px;
+              "
+              >國家</span
+            >
+            <span
+              style="
+                display: inline-block;
+                border-bottom: 1px solid #000;
+                width: 60px;
+              "
+              >城市</span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="label">戶籍地址</td>
+          <td colspan="9">
+            <table style="border: none">
+              <tr>
+                <td style="border: none; width: 15%">郵遞區號</td>
+                <td style="border: none; width: 10%">縣</td>
+                <td style="border: none; width: 10%">鄉鎮</td>
+                <td style="border: none; width: 10%">里</td>
+                <td style="border: none" colspan="5">路</td>
+              </tr>
+              <tr>
+                <td style="border: none">
+                  <span class="checkbox"></span><span class="checkbox"></span
+                  ><span class="checkbox"></span>
+                </td>
+                <td style="border: none">市</td>
+                <td style="border: none">市區</td>
+                <td style="border: none">村</td>
+                <td style="border: none">街</td>
+                <td style="border: none">巷</td>
+                <td style="border: none">弄</td>
+                <td style="border: none">號</td>
+                <td style="border: none">樓</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">居住地址</td>
+          <td colspan="9">
+            <span class="checkbox"></span>同戶籍地&nbsp;&nbsp;<span
+              class="checkbox"
+            ></span
+            >另列如下
+          </td>
+        </tr>
+        <tr>
+          <td class="label">帳單地址</td>
+          <td colspan="9">
+            <span class="checkbox"></span>同戶籍地&nbsp;&nbsp;<span
+              class="checkbox"
+            ></span
+            >同居住地&nbsp;&nbsp;<span class="checkbox"></span>另列如下
+          </td>
+        </tr>
+        <tr>
+          <td class="label">聯絡電話</td>
+          <td class="field" colspan="2"></td>
+          <td class="label" style="width: 8%">行動電話</td>
+          <td class="field" colspan="1"></td>
+          <td class="label" style="width: 8%">E-mail</td>
+          <td class="field" colspan="3"></td>
+        </tr>
+        <!-- 職業資料 -->
+        <tr>
+          <td
+            rowspan="5"
+            class="section-header"
+            style="writing-mode: vertical-rl; text-orientation: upright"
+          >
+            職業資料
+          </td>
+        </tr>
+        <tr>
+          <td class="label">公司名稱</td>
+          <td class="field" colspan="2"></td>
+          <td class="label">職稱</td>
+          <td class="field"></td>
+          <td class="label">年資</td>
+          <td class="field"></td>
+          <td class="label">月收入</td>
+          <td class="field">新臺幣元</td>
+        </tr>
+        <tr>
+          <td class="label">職業別</td>
+          <td class="field" colspan="2"></td>
+          <td class="label">職務別</td>
+          <td class="field"></td>
+          <td class="label">公司統編</td>
+          <td class="field"></td>
+          <td class="label">公司電話</td>
+          <td class="field"></td>
+        </tr>
+        <tr>
+          <td class="label">公司地址</td>
+          <td colspan="9" class="field"></td>
+        </tr>
+        <tr>
+          <td class="label">所得資金<br />來源</td>
+          <td colspan="9">
+            <span class="checkbox"></span>經營事業收入
+            <span class="checkbox"></span>薪資所得
+            <span class="checkbox"></span>繼承/贈與
+            <span class="checkbox"></span>投資理財
+            <span class="checkbox"></span>退休金
+            <span class="checkbox"></span>租金收入
+            <span class="checkbox"></span>專案執業收入
+            <span class="checkbox"></span>閒置資金<br />
+            <span class="checkbox"></span
+            >其他(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+          </td>
+        </tr>
+
+        <!-- 貸款資料 -->
+        <tr>
+          <td
+            rowspan="4"
+            class="section-header"
+            style="writing-mode: vertical-rl; text-orientation: upright"
+          >
+            貸款資料
+          </td>
+          <td class="label">貸款額度</td>
+          <td colspan="9">
+            1.<span class="checkbox"></span
+            >循環動用型。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            2.<span class="checkbox"></span>一次撥付型。
+          </td>
+        </tr>
+        <tr>
+          <td class="label">申請金額</td>
+          <td class="field" colspan="4">新臺幣萬元整</td>
+          <td class="label">申請年限</td>
+          <td class="field" colspan="3">年 ( 1~7年)</td>
+        </tr>
+        <tr>
+          <td class="label">匯入銀行</td>
+          <td colspan="4"></td>
+          <td class="label">匯入帳號</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td colspan="9" class="small-text red-text">
+            ＊撥款金額僅得匯入申請人本人同名國內帳戶，撥款時如非匯入申請人於聯邦銀行開立之帳戶，應支付跨行匯款作業處理費每筆新臺幣100
+            元整(內扣)
+          </td>
+        </tr>
+        <!-- 代償資料 -->
+        <tr>
+          <td
+            rowspan="4"
+            class="section-header"
+            style="writing-mode: vertical-rl; text-orientation: upright"
+          >
+            代償資料
+          </td>
+          <td class="center label">代償順序</td>
+          <td class="center label">銀行名稱</td>
+          <td class="center label" colspan="2">分行名稱</td>
+          <td class="center label" colspan="2">帳號</td>
+          <td class="center label">戶名</td>
+          <td class="center label">申請金額</td>
+          <td class="center label">實際代償金額</td>
+        </tr>
+        <tr>
+          <td class="center">1</td>
+          <td></td>
+          <td colspan="2"></td>
+          <td colspan="2"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="center">2</td>
+          <td></td>
+          <td colspan="2"></td>
+          <td colspan="2"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="center">3</td>
+          <td></td>
+          <td colspan="2"></td>
+          <td colspan="2"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th class="label section-title" colspan="9">
+            綜 合 約 定 條 款 暨 聲 明 事 項
+          </th>
+        </tr>
+        <tr style="font-size: 9px">
+          <td class="field" colspan="9">
+            <ul style="list-style-type: decimal; padding-left: 25px">
+              <li>
+                申請人(以下簡稱本人)提供之證明文件及申請書上所載各項資料均正確無誤，以作為徵審之依據；並同意
+                貴行、財團法人金融聯合徵信中心、財團法人中小企業信用保證基金、財團法人農業信用保證基金、財團法人海外信用保證基金、財金資訊股份有限公司、台灣票據交換所、委託之外部鑑價機構及其他經金融監督管理委員會指定之機構(以下簡稱前揭機構)，於其營業登記項目或章程所定業務之需要等之特定目的範圍內，得蒐集、處理、利用及國際傳輸本人之個人資料，且亦授權
+                貴行得向前揭機構蒐集本人資料，如有必要，
+                貴行亦得與金融同業間相互照會(含查詢及提供)本人之信用、財務狀況與票據信用資訊，特此聲明。
+              </li>
+              <li>
+                就本申請書及所附資料， 貴行應盡保密責任。本人同意
+                貴行保留核貸與否之權利，若經 貴行核准後，不論是否動撥，同意
+                貴行將立即報送財團法人金融聯合徵信中心，供各金融機構遵循DBR22倍的控管規範；若未經
+                貴行核准，本申請書及所附文件同意不予退還。另無論本人申請上述何項方案，如
+                貴行無法核給上述申貸產品或(及)申貸金額時，本人同意以
+                貴行核給之貸款產品及金額為準，不再重新填寫申請書。
+              </li>
+              <li>
+                本人同意除需本人親自填寫或簽名外，授權
+                貴行人員就個人信貸契約書依本人指示或貴行實際核貸條件與撥款日期填載，惟如因
+                貴行就實際核貸金額與本人申請不同時，貴行僅得於本人申請金額以下之實際貸款金額填寫於契約書。
+              </li>
+              <li>
+                本人了解如資金用途為代償其他金融機構債務時，代償金額以實際撥貸金額為準，並授權
+                貴行將實際代償金額、代償總金額填載於個人信貸申請書、授信額度動用申請書及個人信貸契約書上。如實際代償金額小於實際借貸金額，同意就超過代償金額之借款餘額匯入申請書貸款資料指定之匯款帳戶。
+              </li>
+              <li>循環動用型額度有效期間及動用方式：</li>
+              <li>
+                <ul style="list-style-type: none; padding: 0; margin: 0">
+                  <li style="padding-left: 15px">
+                    (1)
+                    循環動用型額度有效期間：自契約書有效日起最長五年，有效期間屆滿，倘本人不為反對續約之意思表示，視為同意經
+                    貴行審核核准後以同一內容延長期間一年，其後亦同；倘貴行不為續約時，除本人有聯邦銀行「個人信貸」契約書第十三、十四條喪失期限利益之情事而需一次全額或部分清償本借款外，本人得依每筆借款原申請之分期方案繼續清償。
+                  </li>
+                  <li style="padding-left: 15px">
+                    (2)
+                    循環動用型額度動用方式：本人將於申請當時借款額度之可用餘額範圍內填具「授信額度動用申請書」以傳真或其他約定方式向貴行申請動用。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                茲聲明本次信用貸款申請過程符合以下所列情形：（1）本次信用貸款之申請作業並非透過代辦公司辦理。（2）除
+                貴行契約書所載費用外，並無
+                貴行員工或其他人員向本人收取額外費用或報酬。（3）本次提供
+                貴行之申請資料(包含但不限於身分證影本、在職證明、收入證明文件等)，均為未經變造或偽造之真實文件。(4)本次申請貸款如資金用途為代償本人於其他金融機構之債務，授權
+                貴行得以本人名義向其他金融機構照會欠款實際金額並以本人名義完成代償手續，並以
+                貴行貸放後查詢之聯徵資料，證明所欲代償之相關債務(包含信用貸款、信用卡及現金卡)已確實清償無誤。<br />
+              </li>
+              <li>
+                本人為增加財力而提供不動產者，本人同意授權
+                貴行於授信業務之目的範圍內
+                ，代理本人向地政機關申請本人名下不動產之第一類土地登記及地價資料(含紙本及電子謄本)。
+              </li>
+              <li>
+                本人知悉，本筆貸款如未按時依約繳款，
+                貴行將依主管機關規定報送登錄金融聯合徵信中心信用不良紀錄，而可能影響本人現有卡片之使用及未來申辦其他貸款（含現金卡）或信用卡之權益。（上述信用不良紀錄之揭露期間得於聯徵中心網站【www.jcic.org.tw】查詢。）
+              </li>
+              <li>
+                <span class="red-text"
+                  >本人知悉為遵循相關規範，於超過主管機關有關個人於全體金融機構現欠總額不得超過月收入之22
+                  倍規範或 貴行代償之債務未完成代償手續時，本人同意於
+                  貴行通知後，即無條件立即清償全部貸款金額及相關利息、遲延利息、違約金及費用，絕無異議。</span
+                >
+              </li>
+              <li>
+                本人如遭警察機關依洗錢防制法第十五條之二規定裁處告誡，且仍在法令規定之限制期間內者，同意
+                貴行保留撥貸與否權利。
+              </li>
+              <li>
+                【電話行銷同意條款】本人同意貴行得以電話行銷貴行之存款、放款、信用卡、保險及投資理財等金融商品，且本人得隨時向貴行提出停止電話行銷之要求，其方式及管道包括但不限於(1)電話行銷受話時、(2)貴行免付費服務專線0800-089-888、(3)透過貴行營業據點、(4)貴行官方網站」。<br />
+              </li>
+              <li>
+                本人確認已於合理期間詳閱上述約定，及聲明上列資料正確無誤，茲親自簽名於下以示同意遵守，並同意以上列所載之電話及地址作為本人與
+                貴行業務往來寄送與聯繫之用。
+              </li>
+              <li>
+                本約定條款其他未約定事項，將依照相關法令及聯邦銀行「個人信貸」契約書條款辦理。
+              </li>
+            </ul>
+
+            <div
+              class="field"
+              style="text-align: right; margin-bottom: 15px; position: relative"
+            >
+              <span style="font-size: 11px"
+                >申請人簽章 ________________________________</span
+              >
+              <div
+                style="
+                  position: absolute;
+                  top: 3px;
+                  right: 0px;
+                  bottom: 0px;
+                  font-size: 7px;
+                "
+              >
+                申請人簽名須完整不可塗改
+              </div>
+              <div
+                style="position: absolute; top: 17px; right: 0px; bottom: 0px"
+              >
+                中 華 民 國　　　　年　　　　月　　　　日
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="field" colspan="9">
+            ※以上所填資料均按實填列，如有不實或漏報願負一切法律責任。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;申請人簽章：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
+        </tr>
+      </table>
+
+      <div class="small-text" style="padding: 0 10px"></div>
+
+      <table>
+        <tr>
+          <td style="width: 10%">單位別</td>
+          <td colspan="2"></td>
+          <td style="width: 10%">推廣人員</td>
+          <td colspan="2"></td>
+          <td style="width: 10%">單位別</td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+
+      <div class="footer">
+        活動申辦專線：(07)972-8585&nbsp;&nbsp;&nbsp;&nbsp;傳真專線：(07)330-2733&nbsp;&nbsp;&nbsp;&nbsp;E-mail：kp96@ubot.com.tw<br />
+        郵寄地址：802 高雄市苓雅區四維四路 30 號 6 樓 聯邦商業銀行暨支付金融處
+        個人信貸服務小組收
+      </div>
+
+      <div class="page-number">第 1 頁，共 2 頁</div>
+      <div class="version">113.09 版</div>
+    </div>
+
+    <!-- 第二頁 -->
+    <div class="page" style="margin-top: 20px">
+      <div class="section-title" style="margin-top: 20px">
+        聯邦銀行信用卡暨支付金融處蒐集處理利用個人資料告知說明
+      </div>
+      <div class="content">
+        親愛的客戶您好，由於個人資料之蒐集涉及您的隱私權益，請於申請前詳閱以下說明並事先於聯邦銀行暨信用卡網站查詢信用卡及貸款相關約定條
+        款、聲明書及相關費用收取方式與各項權益介紹，以確保您的權益。聯邦商業銀行股份有限公司(以下稱本行)為向您蒐集個人資料並為利用與處理，
+        依據個人資料保護法(以下稱個資法)第八條規定應告知下列事項：
+        <ul style="list-style-type: cjk-ideographic; padding-left: 20px">
+          <li>
+            蒐集之目的：本行將在「022外匯業務、036存款與匯款業務、040行銷業務、059
+            金融服務業依法令規定及金融監理需要所為之蒐集處理及利
+            用、060金融爭議處理、063非公務機關依法定義務所進行個人資料之蒐集處理及利用、067信用卡現金卡轉帳卡或電子票證業務、069其他契
+            約類似契約或法律關係管理之事務或業務、082借款戶與存款戶存借作業綜合管理、088核貸與授信業務、090消費者客戶管理與服務、091消
+            費者保護、098商業與技術資訊、104帳務管理及債權交易業務、106授信業務、111票券業務、112
+            票據交換業務、113陳情、請願、檢舉案
+            件處理、135資(通)訊服務、136資(通)訊與資料庫管理、137資通安全與管理、154徵信、157調查、統計與研究分析、181其他經營合於營業登
+            記項目或組織章程所定之業務（例如：電子金融業務、代理收付業務、共同行銷或合作推廣業務…）、182其他諮詢與顧問服務、依照FATCA法
+            案及IGA協議辨識身分並提供予國內外主管機關」之範圍內蒐集、處理、利用您的個人資料。
+          </li>
+          <li>
+            個人資料之類別：中、英文姓名、身分證統㇐編號、美國稅籍編號、性別、出生年月日、出生地、國籍、聯絡電話號碼、戶籍地址、住址、工
+            作地址、電子郵遞地址、帳戶號碼與戶名、電子發票號碼、儲蓄、結匯紀錄、財務交易、帳戶餘額、帳戶總交易金額、交易明細、IP位址、Cookie
+            ID與其內容、網域名稱、裝置資訊、行動裝置識別碼、社群網路資訊、網際網路瀏覽/點選軌跡等如申請書所示之客戶基本資料欄位及所檢附個
+            人財務資料文件等內容，並以本行與客戶往來之相關業務、帳戶或服務及自您或第三人處（如財團法人金融聯合徵信中心等）所實際蒐集之個
+            人資料為準。
+          </li>
+          <li>
+            資料利用之期間：申請人依特定目的存續期間與國內外相關法令所定（如商業會計法等）或因執行業務所必須之保存期間（自申請日至契約中
+            止後15 年間）或信用卡契約約定之期間之保存年限，並以期限最⾧者為準。
+          </li>
+          <li>
+            資料利用之地區：台灣地區與使用服務地域並包含以下利用對象之國內外所在地。
+          </li>
+          <li>
+            資料利用之對象：本行及海內外分支機構(含受本行委託處理事務之委外機構)、其他業務相關機關(如通匯行、財團法人聯合信用卡處理中心、
+            財團法人金融聯合
+            徵信中心、信用卡國際組織、台灣票據交換所、財金資訊股份有限公司、信用保證機構、收單機構暨特約商店等)、國內外
+            依法有權機關或金融監理機關及您所同意之對象（包含本行共同行銷單位(詳見本行網站)
+            或本行合作推廣業務之單位，如：連加網路商業股份有限公司）。
+          </li>
+          <li>
+            資料利用之方式：符合個資法相關法令以自動化機器或其他非自動化之利用方式。
+          </li>
+          <li>
+            依據個資法第三條所訂您就本行保有您的個人資料得行使下列權利，有關如何行使之方式，得向本行客服詢問或於本行網站查詢：
+            <ul style="list-style-type: none; padding-left: 20px">
+              <li>
+                (一)　除有個資法第十條所規定之例外情形外，得向本行查詢、請求閱覽或請求製給複製本，惟本行依個資法第十四條規定得酌收必要成本費
+                用。
+              </li>
+              <li>
+                (二)　得向本行請求補充或更正，惟依個資法施行細則第十九條規定，應適當釋明其原因及事實。
+              </li>
+              <li>
+                (三)　本行如有違反個資法規定蒐集、處理或利用您之個人資料，依個資法第十㇐條第四項規定，得向本行請求停止蒐集。
+              </li>
+              <li>
+                (四)　依個資法第十㇐條第二項規定，個人資料正確性有爭議者，得向本行請求停止處理或利用您之個人資料。惟依該項但書規定，本行因執行
+                　　　業務所必須並註明其爭議或經您書面同意者，不在此限。
+              </li>
+              <li>
+                (五)　依個資法第十㇐條第三項規定，個人資料蒐集之特定目的消失或期限屆滿時，得向本行請求刪除、停止處理或利用您之個人資料。惟依該
+                　　　項但書規定，本行因執行業務所必須或經您書面同意者，不在此限。
+              </li>
+            </ul>
+          </li>
+          <li>
+            您得自由選擇是否提供上開個人資料及類別，惟如拒絕提供之資料為審核或作業所需之資料，本行可能無法進行必要之業務審核或作業而無法
+            提供您相關服務或無法提供較佳之服務，敬請見諒。 申請人確認已收執
+            貴行蒐集處理利用個人資料之告知說明，並已詳細閱讀有關內容。(若對
+            上述內容有任何問題歡迎透過本行網站揭露之通訊方式
+            進行聯繫，或致電(02)2545-5168或(07)226-9393向信用卡客服洽詢，我們將會為您再次說明。)
+          </li>
+        </ul>
+      </div>
+
+      <div class="page-number">第 1 頁，共 2 頁</div>
+      <div class="version">113.09 版</div>
+    </div>
+  </body>
+</html>
